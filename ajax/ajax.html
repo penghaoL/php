@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ajax初试</title>
+</head>
+<body>
+	用户名：<input type="text" id='username'><br /><br />
+		密&nbsp;&nbsp;&nbsp;&nbsp;码：<input type="password" id='password'><br /><br />
+		<button id='btn'>登录</button>
+		<button id='btn2'><a href='register.html' style="text-decoration: none;color:#000;">注册</a></button>
+	<script>
+		var username = document.getElementById('username');
+		var password = document.getElementById('password');
+		var btn = document.getElementById('btn');
+		btn.onclick = function(){
+		    var user = username.value;
+		    var passw = password.value;
+		    var xhr = new XMLHttpRequest();
+		    xhr.open('POST','login1.php');
+		    xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+		    xhr.send(`username=${user}&password=${passw}`);
+		    xhr.onreadystatechange = function(){
+		    	if(xhr.readyState === 4){
+		    		alert(this.responseText);
+		    	}
+		    	}
+		    }
+	</script>
+</body>
+</html>
